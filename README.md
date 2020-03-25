@@ -176,15 +176,36 @@ chaque champs à une fonction qui s'execute sur l'event javascript natif "change
 
 - En utilisant styled-components, reprendre le design du composant Button.
 - Votre nouveau bouton peut alors être utilisé pour améliorer l'affichage de la page `StartPage`.
+//done
+//todo
 - Ajouter un header et un footer sur toutes les pages de l'application. 
 - Réaliser le design du formulaire de de `CodePage`, utilisé pour rejoindre l'application.
 - Faire de même avec `CreatePage`.
-
-
+//endtodo
 ### Utilisation de Firebase
 
 - Dans 'User.js', comment fait-on pour garder une trace persistente de l'application, même lorsqu'on rafraichit la page ? Comment reconnait-on l'utilisateur lorsqu'il revient dans l'application ?
+
+Reponse:
+
+firebase.auth().currentUser; 
+cette function stocke un utilisateur dans la base de donnée de firebase et stocke en même temps l'information sur les cookies du navigateur. Il peut ensuite comparer les cookies avec les informations stockée en base de données et si il y a une correspondance firebase sait qui vous êtes.
+const connect = () => {
+ firebase.auth().signInAnonymously().catch(error => {
+   console.log("Error with anonymous connexion", error.code);
+   console.log(error.message);
+ });
+}
+cette fonction permet de stocké l'utilisateur si aucun user n'est définit.
+
+
 - Dans Firebase, nous ne pouvons pas ajouter des champs à un utilisateur. Par conséquent, nous devons créer une collection d'utilisateurs et synchroniser les utilisateurs avec cette table. Expliquer où est-ce que cette synchronisation a lieu.
+cette syncronisation à lieu dans le useEffect qui prend comme argument déclencheur auth qui correspond au hook useAuth.    
+if(!doc.exists) {
+      doc.set({uid: auth.user.uid})
+} ce petit bout de code permet d'inserer un document si l'utilisateur n'est pas encore dans la collection. cette syncronisation est appellé chaque fois que auth subit une modification.  
+
+//todo
 - A votre avis, à quoi sert useEffect ?
 - A quoi sert la fonction `unsubscribe` utilisée dans les `useEffect` de `User.js` ?
 - Décrire les trois valeurs de retour de `UseUser`.

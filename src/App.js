@@ -13,7 +13,8 @@ import DeadPage from './pages/DeadPage'
 import { MasterGameProvider } from './services/MasterGame';
 import { GameProvider } from './services/Game';
 import { UserProvider } from './services/User';
-
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import './App.css';
 
 function App() {
   return (
