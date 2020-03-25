@@ -21,14 +21,21 @@ Je vous invite à regarder la vidéo de [Human Talks Paris](https://www.youtube.
 
 Quelques petites questions :
 
-- Résumer en une phrase l'intérêt de Material UI
-- Comment importer `material-ui` dans un fichier ?
-- Comment une application peut utiliser un thème à travers l'ensemble d'un projet ?
-- A quoi sert `createMuiTheme` ?
-- A quoi correspond `palette` ?
-- Comment re-définir des propriétés ?
-- A quoi vous fait penser `withStyle` ? Comment l'utiliser ?
-- Reproduire les deux boutons rouge et bleu présentées dans la vidéo.
+- Résumer en une phrase l'intérêt de Material UI: Gagner du temps avec des composants qui suivent le concencus actuel des interfaces web tout en ayant le possibilité de les modifiés facilement.
+
+- Comment importer `material-ui` dans un fichier ?: il faut importer les different composant de material ui depuis le module @material-ui.
+
+- Comment une application peut utiliser un thème à travers l'ensemble d'un projet ?: Elle peut utiliser MuiThemeProvider qui permet de créer des themes facilement.
+
+- A quoi sert `createMuiTheme` ?: Il permet de personaliser un partie des composant de material-ui.
+
+- A quoi correspond `palette` ?: Il permet de personaliser les couleurs
+
+- Comment re-définir des propriétés ?: avec la clé overrides de l'objet createMuiTHeme
+
+- A quoi vous fait penser `withStyle` ? Comment l'utiliser ?: Sa me fait pensé à du css passé en javascript (ex: el.style.color = 'blue'). On peut l'utiliser directement dans class name en faisant className={style.bg}, on peut aussi en fair un HOC. 
+
+- Reproduire les deux boutons rouge et bleu présentées dans la vidéo.: https://github.com/Yoon-Dev/tmp-button.git
 
 
 ## Styled Components
@@ -37,12 +44,23 @@ De la même manière, voici une [vidéo](https://www.youtube.com/watch?v=mS0UKNB
 
 Quelques petites questions :
 
-- Qu'est-ce que le CSS-in-JS ?
-- Qu'est-ce que sont les tagged templates (délimitées par des backticks) ?
+- Qu'est-ce que le CSS-in-JS ?: C'est du css généré par le javascript
+
+- Qu'est-ce que sont les tagged templates (délimitées par des backticks) ?:  C'est une nouvelle feature de l'es6 qui permet d'intégrer plus facilement du code javascript à une string (ex: `Hello ${word}`)
+
 - Donner un exemple d'un bouton personnalisé avec et sans les tagged templates ?
-- Comment utilise-t-on les props dans cette librarie ?
-- Reprendre l'exemple du Material UI avec styled-components; l'écrire avec la composition et avec l'héritage.
-- Quelles sont les fonctions du contexte de styled-components ?
+
+sans => styled.button(["color: lightsalmon"])
+
+avec =>
+let color = 'lightsalmon'
+styled.button`color: ${color}`
+
+- Comment utilise-t-on les props dans cette librarie ?: On utilise un HOC nommé ThemeProvider dans lequel on pass un attribut theme qui contient un objet javascript contentant le css. On peut ensuite retrouvé ces même propriété css en faisant props.theme.exemple.css
+
+- Reprendre l'exemple du Material UI avec styled-components; l'écrire avec la composition et avec l'héritage.: https://github.com/Yoon-Dev/tmp-button.git
+
+- Quelles sont les fonctions du contexte de styled-components ? il y a le HOC withTheme, ou alors la fonction  themeContext, qui utlise le useContext natif de react
 
 
 ## Mise en place du design
@@ -64,12 +82,95 @@ Activer l'authentification anonyme dans la console de Firebase.
 ### Découverte du code
 
 - Le code utilise des fonctions plutôt que des classes. Ecrire un bouton sous la forme d'une classe et d'une fonction. Retrouver les équivalences entre les méthodes des composants (telles que setState) et celles des fonctions ?
+
+Réponse: 
+
+ecrire un boutton sous form de function
+const btn = props =>{
+    return(
+        <button />
+    )
+}
+ecire un boutton sous forme de class 
+class btn extends Component{
+    render(){
+        return(
+            <button />
+        )
+    }
+}
+
+equivalence class function: 
+le state de la class equivaux à useState. les functions componentDidMount, componentDidUnmount etc.. sont lié à useEffect, se hook contient un tableau de dépendense pour savoir quand appellé ou non la function. On peut mettre plusieur useEffect dans un même composant. La function component didUnMount est géré dans la partie clear du useEffect. Il est trompeur de mettre des variables de state dans un useEffect car le comportement est souvent peu prévisible. On peut alors utilisé un useRef qui ferra réference à la variable state. Il existe un multitude de hook, il est conseillé de faire un seul hook par composant en utilsant un hook personnalisé.
+
+
 - Comment récupérer les props dans une fonction ?
+Réponse
+const composant = props => {
+    console.log(props)   
+}
+comme cela
 - Dans `App.js`, identifier les différents producteurs de données. Retrouver leur définition. Quelles données partagent-ils à l'ensemble de l'application ?
+
+Réponse:
+Les provider sont:
+- UserProvider
+il partage toute les données relatifs à un utilisateur (si il est authentifier etc...)
+- GameProvide
+il partage les informations du jeu pour un joueur au reste de l'application, il fait des requette à la base de données. 
+- MasterGameProvider
+il partage les données relative au jeu (la partie) en général, il avertit si un joueur est présent dans plusieur partie en même temps.
+    
+
 - Identifier les différentes pages de l'application. Décrire à l'aide d'une phrase le rôle de chacune d'entre elles.
+Réponse:
+
+- la page start avec comme path "/"
+permet de créer ou de rejoindre une partie
+
+- la page end vec comme path "/end"
+permet à la fin d'une partie de montrer les gagnants
+
+- la page join avec comme path "/join"
+permet de rejoindre une partie
+
+- la page create avec comme path "/create"
+permet  de créer et de recuperer le code de partage de la partie, elle permet également de la démarrer
+
+- la page night avec comme path "/night"
+permet de dire que c'est la nuit.. elle est assez vide pour l'instant
+
+- la page resultpage avec comme path "/vote/results" 
+permet d'afficher les résultats du vote, elle affiche un message si un joueur arrive sur cette page par inadvertance
+
+- la page castpage avec comme path "/vote/cast"
+permet de retourner une page vide mais j'imagine que c'est ici que l'on devra faire le systeme de vote
+
+- la page alive avec comme path "/alive"
+permet d'afficher notre nom pour l'instant
+
+- la page dead avec comme path "/dead"
+permet au joueur de savoir quand il est mort
+
+
+- la page spell avec comme path "/spell"
+permet au joueur qui joue la sorcière de pouvoir utiliser ses sorts
+
+
 - Pourquoi voit-on sur plusieurs pages "Chargement du master game en cours" ?
+
+Réponse:
+car les pages utilise les provider GameProvider et MasterGameProvider et ses deux provider instancie sur leur hook verifie la varialbe loading par défault à true, Ensuite la provider verifie si loading est true alors elle renvoie une div avec le texte "Chargement du master game en cours". On change la valeur de loading avec la méthode onSnapchot qui est activé lors du clique sur le boutton du formulaire de la page CodePage
+
 - Avec les classes, nous utilisions `withMyContext` pour s'inscrire aux données d'un provider. Identifier dans services/Game.js la fonction qui joue désormais ce rôle.
-- Dans `CodePage`, rappeler comment un formulaire gère les champs de remplissage des données.o
+
+Réponse:
+c'est la fonction gameContext qui crée un objet context natif  de react
+
+- Dans `CodePage`, rappeler comment un formulaire gère les champs de remplissage des données.
+
+Réponse:
+chaque champs à une fonction qui s'execute sur l'event javascript natif "change". C'est evenement représente un changement de la valeur d'un champ. La function que cette évenement déclenche est la constante définite sur un useState, qui permet de changer la valeur de la variable d'état. (const [valeur, function-qui-change-la-valeur-de-valeur] = useState(etat-initial))
 
 ### Reprise du design
 
