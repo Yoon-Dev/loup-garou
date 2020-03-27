@@ -179,6 +179,7 @@ chaque champs à une fonction qui s'execute sur l'event javascript natif "change
 //done
 //todo
 - Ajouter un header et un footer sur toutes les pages de l'application. 
+
 - Réaliser le design du formulaire de de `CodePage`, utilisé pour rejoindre l'application.
 - Faire de même avec `CreatePage`.
 //endtodo
@@ -199,17 +200,40 @@ const connect = () => {
 cette fonction permet de stocké l'utilisateur si aucun user n'est définit.
 
 
-- Dans Firebase, nous ne pouvons pas ajouter des champs à un utilisateur. Par conséquent, nous devons créer une collection d'utilisateurs et synchroniser les utilisateurs avec cette table. Expliquer où est-ce que cette synchronisation a lieu.
+- Dans Firebase, nous ne pouvons pas ajouter des champs à un utilisateur. Par conséquent, nous devons créer une collection d'utilisateurs et synchroniser les 
+Réponse: 
+
+utilisateurs avec cette table. Expliquer où est-ce que cette synchronisation a lieu.
 cette syncronisation à lieu dans le useEffect qui prend comme argument déclencheur auth qui correspond au hook useAuth.    
 if(!doc.exists) {
       doc.set({uid: auth.user.uid})
 } ce petit bout de code permet d'inserer un document si l'utilisateur n'est pas encore dans la collection. cette syncronisation est appellé chaque fois que auth subit une modification.  
 
-//todo
 - A votre avis, à quoi sert useEffect ?
+Réponse: 
+
+useEffect permet d'effectuer une action à chaque fois qu'un composant est monté, on peut aussi effectuer une action chaque fois qu'il est démonté. On peut également s'en servir pour effectuer une action chaque fois qu'une variable est modifié en la mettant de la tableau de dépendance []
+
 - A quoi sert la fonction `unsubscribe` utilisée dans les `useEffect` de `User.js` ?
+Réponse: 
+
+Il y a deux fonction unsubscribe stocké dans des constantes utilisé dans deux useEffect. Cette fonction cette à pour but de gérer l'authentification et assure le stockage dans la base de donnée de l'utilisateur. Elle permet aussi de passé la variable loading à false.
+
 - Décrire les trois valeurs de retour de `UseUser`.
+Réponse:
+
+Si l'autorisation charge alors elle renvoie un objet vide ( {} ).
+Si ce n'est pas le cas alors elle revoie la fonctoin unsubscribe
+Si il y a eu une error et que la fonction unsubscribe n'a pas pu être envoie alors on revoie la variable error dans laquel on stocke l'error, la variable loading et la variable user
+
+
 - Combien de collections dans Firebase pouvez-vous identifier ? A quoi correspondent les `doc` ?
+Réponse:
+
+Il y a deux collection, game et user.
+Les doc correspondent à un enregistrement de la collection (~ une ligne de base de donnée SQL classique)
+
+
 
 ### Contribuer à l'application
 

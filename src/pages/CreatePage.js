@@ -2,9 +2,13 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import Button from '../components/Button';
 import { useMasterGame, addPlayer } from '../services/MasterGame';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 
 
 const AddPlayerForm = () => {
+
+
   const [value, setValue] = useState('');
   const { game } = useMasterGame();
     console.log("master game id", game.id);
@@ -31,23 +35,38 @@ const AddPlayerForm = () => {
 };
 
 const CreatePage = (props) => {
+  const useStyles = makeStyles(theme => ({
+    item: {
+      display: 'flex',
+      justifyContent: "center"
+    },
+    container: {
+      alignItems: 'center'
+    }
+    }));
+
+  const classes = useStyles();
   const { game } = useMasterGame();
   const players = game.players || [];
 
   return (
-    <div>
-      <h1>Vos amis peuvent se connecter avec le code {game.code}</h1>
-      <div>
+    <Grid container spacing={3} className={classes.container}>
+      <Grid item xs={12} className={classes.item}>
+        <h1>Vos amis peuvent se connecter avec le code {game.code}</h1>
+      </Grid>  
+      <Grid item xs={12} className={classes.item}>
         {players.map((player, index) => (
           <div key={index}>
             {player.name}
           </div>
         ))}
-      </div>
-      <Link to="/night">
-          <Button>Démarrer la partie</Button>
-      </Link>
-    </div>
+      </Grid>
+      <Grid item xs={12} className={classes.item}>
+        <Link to="/night">
+            <Button color="primary">Démarrer la partie</Button>
+        </Link>
+      </Grid>
+    </Grid>
   );
 };
 

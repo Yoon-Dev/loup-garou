@@ -9,6 +9,7 @@ const generateCode = () => {
 }
 
 export const createGame = user => {
+  console.log(`MasterGame${user}`)
   return firebase
     .firestore()
     .collection('game')

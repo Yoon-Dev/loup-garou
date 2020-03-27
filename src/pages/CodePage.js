@@ -3,9 +3,23 @@ import {useHistory} from 'react-router-dom';
 import {useUser} from '../services/User';
 import Button from '../components/Button';
 import firebase from '../services/Firebase';
-
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 
 const CodePage = ({setGame}) => {
+  const useStyles = makeStyles(theme => ({
+    item: {
+      display: 'flex',
+      justifyContent: "center",
+      
+    },
+    container: {
+      marginTop: "25px"
+    }
+    }));
+
+  const classes = useStyles();
   const [code, setCode] = useState('');
   const [name, setName] = useState('');
   const {user} = useUser();
@@ -41,21 +55,34 @@ const CodePage = ({setGame}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="code"
-        placeholder="Ajouter le code de la partie"
-        onChange={e => setCode(e.target.value)}
-      />
-      <input
-        type="text"
-        name="name"
-        placeholder="Ajouter votre nom"
-        onChange={e => setName(e.target.value)}
-      />
-      <Button>Démarrer</Button>
-    </form>
+    
+      <form onSubmit={handleSubmit}>
+        <Grid container spacing={3} className={classes.container}>
+          <Grid item xs={12} className={classes.item}>
+            <TextField
+              type="text"
+              name="code"
+              label="Ajouter le code de la partie"
+              variant="filled"
+              onChange={e => setCode(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12} className={classes.item}>
+            <TextField
+              type="text"
+              name="name"
+              label="Ajouter votre nom"
+              variant="filled"
+              onChange={e => setName(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12} className={classes.item}>
+            <Button color="primary">Démarrer</Button>
+          </Grid>
+        </Grid>
+      </form>
+    
+    
   );
 };
 

@@ -1,3 +1,10 @@
+#App{
+    overflow: hidden;
+    min-height: 100vh;
+    background-image: url('/img/fog.png');
+
+}
+
 a {
   text-decoration: none;
 }
