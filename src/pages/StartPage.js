@@ -1,10 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useSession } from '../services/User';
-import { createGame } from '../services/MasterGame';
-import Button from '../components/Button';
 import { makeStyles } from '@material-ui/core/styles';
-
+import Grid from '@material-ui/core/Grid';
 
 
 const Start = () => {
@@ -13,30 +10,36 @@ const Start = () => {
 
   console.log(`Start page ${user}`)
   const useStyles = makeStyles(theme => ({
-    container: {
-      minHeight: '100vh'
-    
-    },
     item: {
       display: 'flex',
       justifyContent: "center"
+    },
+    container: {
+      alignItems: 'center'
+    },
+    center:{
+        textAlign: 'center'
+    },
+    video: {
+      marginTop: "15px",
+      minWidth: "100vw",
+      height: "50vh"
     }
     }));
 
-const classes = useStyles();
+  const classes = useStyles();
+
   return (
-      <div>
-        <Link to="/create" onClick={() => createGame(user)}>
-          <Button color="primary">
-            Nouvelle partie
-          </Button>
-        </Link>
-        <Link to="/join">
-          <Button color="secondary">
-            Rejoindre une partie
-          </Button>
-        </Link>
-      </div>
+    <Grid container spacing={3} className={classes.container}>
+      <Grid item xs={12} className={classes.item}>
+          <video width="320" height="240" autoPlay loop className={classes.video}>
+            <source src="./video/trailer.mp4" type="video/mp4" />
+          </video>
+      </Grid>
+    </Grid>
+
+
+
         
   );
 }

@@ -22,9 +22,9 @@ function App() {
 
   return (
     <div id="App">
-      <BrowserRouter>
-      <ButtonAppBar color="secondary" logoredirect="/"/>
+      <BrowserRouter>    
       <UserProvider>
+        <ButtonAppBar color="secondary" logoredirect="/"/>
         <Route exact path="/" component={ StartPage } />
         <Route path="/end" component={ EndPage } />
         <Route path="/join" component={ CodePage } />

@@ -1,7 +1,7 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import firebase from './Firebase';
 import { useSession } from './User'
-
+import Loader from '../components/Loader';
 
 export const useGameFromUser = user => {
   // retrieve the game for which the user is a player
@@ -47,7 +47,7 @@ export const GameProvider = props => {
     return <div>Erreur... {error}</div>;
   }
   if (loading) {
-    return <div>Chargement du master game en cours...</div>;
+    return <Loader />;
   }
 
   const {children} = props;

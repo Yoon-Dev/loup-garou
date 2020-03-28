@@ -62,6 +62,9 @@ const ButtonAppBar = props => {
   const classes = useStyles();
 
   const [windowSize, setWindowSize] = useState(window.innerWidth);
+  window.addEventListener('resize', () => {
+    setWindowSize(window.innerWidth)
+  })
 
   return (
     <MuiThemeProvider theme={theme}>

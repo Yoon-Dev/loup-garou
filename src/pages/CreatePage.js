@@ -52,7 +52,7 @@ const CreatePage = (props) => {
   return (
     <Grid container spacing={3} className={classes.container}>
       <Grid item xs={12} className={classes.item}>
-        <h1>Vos amis peuvent se connecter avec le code {game.code}</h1>
+        <h1>Vos amis peuvent se connecter avec le code <b>{game.code}</b></h1>
       </Grid>  
       <Grid item xs={12} className={classes.item}>
         {players.map((player, index) => (

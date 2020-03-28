@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import firebase from './Firebase';
 import {useSession} from './User';
+import Loader from '../components/Loader';
 
 
 const generateCode = () => {
@@ -77,7 +78,7 @@ export const MasterGameProvider = props => {
     return <div>Erreur... {error}</div>;
   }
   if (loading) {
-    return <div>Chargement du master game en cours...</div>;
+    return "";
   }
 
   const {children} = props;

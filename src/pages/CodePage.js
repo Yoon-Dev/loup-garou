@@ -6,6 +6,9 @@ import firebase from '../services/Firebase';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+
+
 
 const CodePage = ({setGame}) => {
   const useStyles = makeStyles(theme => ({
@@ -15,10 +18,13 @@ const CodePage = ({setGame}) => {
       
     },
     container: {
-      marginTop: "25px"
+      marginTop: "25px",
+      justifyContent: "center"
+    },
+    card: {
+      boxShadow: "0px 0px 51px 3px rgba(0,0,0,0.25)"
     }
     }));
-
   const classes = useStyles();
   const [code, setCode] = useState('');
   const [name, setName] = useState('');
@@ -55,32 +61,40 @@ const CodePage = ({setGame}) => {
   };
 
   return (
-    
       <form onSubmit={handleSubmit}>
         <Grid container spacing={3} className={classes.container}>
-          <Grid item xs={12} className={classes.item}>
-            <TextField
-              type="text"
-              name="code"
-              label="Ajouter le code de la partie"
-              variant="filled"
-              onChange={e => setCode(e.target.value)}
-            />
-          </Grid>
-          <Grid item xs={12} className={classes.item}>
-            <TextField
-              type="text"
-              name="name"
-              label="Ajouter votre nom"
-              variant="filled"
-              onChange={e => setName(e.target.value)}
-            />
-          </Grid>
-          <Grid item xs={12} className={classes.item}>
-            <Button color="primary">Démarrer</Button>
-          </Grid>
+          <Grid item xs={8} md={12} className={classes.item}>
+            <Card className={classes.card} color="secondary">
+              <Grid container spacing={3} className={classes.container}>
+                <Grid item xs={12} className={classes.item}>
+                  <TextField
+                    type="text"
+                    name="code"
+                    label="Ajouter le code de la partie"
+                    variant="filled"
+                    onChange={e => setCode(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12} className={classes.item}>
+                  <TextField
+                    type="text"
+                    name="name"
+                    label="Ajouter votre nom"
+                    variant="filled"
+                    onChange={e => setName(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12} className={classes.item}>
+                  <Button color="primary">Démarrer</Button>
+                </Grid>
+              </Grid>         
+            </Card>
+          </Grid> 
         </Grid>
       </form>
+      
+
+      
     
     
   );
