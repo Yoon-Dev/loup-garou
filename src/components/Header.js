@@ -1,5 +1,4 @@
 import React, { useState, Fragment } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '../components/Button';
@@ -43,7 +42,7 @@ const ButtonAppBar = props => {
           <Grid container spacing={3} className={classes.container}>
             <Grid item xs={8}>
               <Link to={props.logoredirect} color="inherit">
-                <img src="./img/logo.png" className={classes.logo}/>
+                <img src="./img/logo.png" className={classes.logo} alt="logo"/>
               </Link>
             </Grid>
             { windowSize > 768 ? 

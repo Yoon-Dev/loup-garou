@@ -1,10 +1,8 @@
 import React from 'react';
-import { useSession } from '../services/User';
 import { useGame } from '../services/Game';
 
 
 const DeadPage = () => {
-  const { user } = useSession();
   const { game } = useGame();
 
 
@@ -19,7 +17,7 @@ const DeadPage = () => {
           return (<li>{user.userName}</li>);
         }
         else {
-          return ;
+          return false;
         }
       })
       }

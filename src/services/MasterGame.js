@@ -1,7 +1,6 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import firebase from './Firebase';
 import {useSession} from './User';
-import Loader from '../components/Loader';
 
 
 const generateCode = () => {

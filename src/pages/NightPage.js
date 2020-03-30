@@ -1,12 +1,7 @@
-import React, { useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { useSession } from '../services/User';
-import { useGame } from '../services/Game';
-import Button from '../components/Button';
+import React from 'react';
 
 
 const NightPage = () => {
-  const { game } = useGame();
 
   return (
   <div> 

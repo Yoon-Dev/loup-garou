@@ -1,10 +1,9 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useSession } from '../services/User';
-import Button from '../components/Button';
 
 
-const CastPage = (props) => {
+const CastPage = () => {
   const { user } = useSession();
   const { history } = useHistory();
   

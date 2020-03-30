@@ -30,9 +30,6 @@ export const useStyles = makeStyles(() => createStyles({
     containerfoot: {
         alignItems: 'flex-end !important'
     },
-    center:{
-          textAlign: 'center'
-    },    
     video: {
         marginTop: "15px",
         minWidth: "100vw",

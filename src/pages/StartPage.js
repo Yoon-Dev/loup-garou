@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSession } from '../services/User';
 import Grid from '@material-ui/core/Grid';
 import { useStyles } from '../style/style';
 

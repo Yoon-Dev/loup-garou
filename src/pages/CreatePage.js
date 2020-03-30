@@ -1,35 +1,35 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import Button from '../components/Button';
-import { useMasterGame, addPlayer } from '../services/MasterGame';
+import { useMasterGame } from '../services/MasterGame';
 import { useStyles } from '../style/style';
 import Grid from '@material-ui/core/Grid';
 
 
-const AddPlayerForm = () => {
+// const AddPlayerForm = () => {
 
 
-  const [value, setValue] = useState('');
-  const { game } = useMasterGame();
+//   const [value, setValue] = useState('');
+//   const { game } = useMasterGame();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    value && addPlayer(value, game);
-    setValue('');
-  };
+//   const handleSubmit = e => {
+//     e.preventDefault();
+//     value && addPlayer(value, game);
+//     setValue('');
+//   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Ajouter le nom d'un joueur..."
-        onChange={e => setValue(e.target.value)}
-      />
-      <button>+</button>
-    </form>
-  );
-};
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <input
+//         type="text"
+//         name="name"
+//         placeholder="Ajouter le nom d'un joueur..."
+//         onChange={e => setValue(e.target.value)}
+//       />
+//       <button>+</button>
+//     </form>
+//   );
+// };
 
 const CreatePage = (props) => {
 

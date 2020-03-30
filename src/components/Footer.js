@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -26,7 +25,7 @@ const classes = useStyles();
                             Les règles
                         </Typography>
                     </div>
-                    <a href="http://lesloupsgarous.free.fr/htm/regles.html" target="_blank">
+                    <a href="http://lesloupsgarous.free.fr/htm/regles.html" target="_blank" rel="noopener noreferrer">
                         <Typography className={classes.click}>
                             click me !
                         </Typography>
@@ -38,7 +37,7 @@ const classes = useStyles();
                             Origines du jeux
                         </Typography>
                     </div>
-                    <a href="https://fr.wikipedia.org/wiki/Les_Loups-garous_de_Thiercelieux#Histoire" target="_blank">
+                    <a href="https://fr.wikipedia.org/wiki/Les_Loups-garous_de_Thiercelieux#Histoire" target="_blank" rel="noopener noreferrer">
                         <Typography className={classes.click}>
                             click me !
                         </Typography>
@@ -50,7 +49,7 @@ const classes = useStyles();
                             Acheter le jeux
                         </Typography>
                     </div>
-                    <a href="https://www.fnac.com/Loups-Garous-Le-Pacte-Asmodee/a8301030/w-4?Origin=SEA_GOOGLE_PLA_JOUET&esl-k=sem-google%7cng%7cc294697013443%7cm%7ckpla375327900180%7cp%7ct%7cdc%7ca58882734453%7cg1558059505&gclid=Cj0KCQjwyPbzBRDsARIsAFh15JZgDHCA9_HLaexZ6TfTXagLhtyzSduUppkAZWDvfkiz7fKQvIrlMY8aAhLoEALw_wcB&gclsrc=aw.ds" target="_blank">
+                    <a href="https://www.fnac.com/Loups-Garous-Le-Pacte-Asmodee/a8301030/w-4?Origin=SEA_GOOGLE_PLA_JOUET&esl-k=sem-google%7cng%7cc294697013443%7cm%7ckpla375327900180%7cp%7ct%7cdc%7ca58882734453%7cg1558059505&gclid=Cj0KCQjwyPbzBRDsARIsAFh15JZgDHCA9_HLaexZ6TfTXagLhtyzSduUppkAZWDvfkiz7fKQvIrlMY8aAhLoEALw_wcB&gclsrc=aw.ds" target="_blank" rel="noopener noreferrer">
                         <Typography className={classes.click}>
                             click me !
                         </Typography>
