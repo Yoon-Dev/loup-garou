@@ -13,14 +13,13 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
+import { useStyles } from '../style/style';
 
 
 
 const ButtonAppBar = props => {
 
   const { user } = useSession();
-  console.log(`Header ${user}`)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -29,35 +28,6 @@ const ButtonAppBar = props => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const useStyles = makeStyles(theme => ({
-      root: {
-          flexGrow: 1,
-      },
-      menuButton: {
-          marginRight: theme.spacing(2),
-      },
-      title: {
-          flexGrow: 1,
-      },
-      box: {
-          display: 'flex',
-          justifyContent: ''
-      },
-      logo: {
-          maxHeight: '8vh',
-          padding: '1em'
-      },
-      item: {
-        display: 'flex',
-        justifyContent: "center"
-      },
-      container: {
-        alignItems: 'center'
-      },
-      toggledmenu: {
-        backgroundColor: 'black'
-      }
-      }));
 
   const classes = useStyles();
 
@@ -69,7 +39,7 @@ const ButtonAppBar = props => {
   return (
     <MuiThemeProvider theme={theme}>
       <AppBar position="static" color={props.color} >
-        <Toolbar className={classes.box}>
+        <Toolbar className={classes.boxhead}>
           <Grid container spacing={3} className={classes.container}>
             <Grid item xs={8}>
               <Link to={props.logoredirect} color="inherit">

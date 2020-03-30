@@ -1,31 +1,11 @@
 import React from 'react';
 import { useSession } from '../services/User';
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import { useStyles } from '../style/style';
+
 
 
 const Start = () => {
-
-  const { user } = useSession();
-
-  console.log(`Start page ${user}`)
-  const useStyles = makeStyles(theme => ({
-    item: {
-      display: 'flex',
-      justifyContent: "center"
-    },
-    container: {
-      alignItems: 'center'
-    },
-    center:{
-        textAlign: 'center'
-    },
-    video: {
-      marginTop: "15px",
-      minWidth: "100vw",
-      height: "50vh"
-    }
-    }));
 
   const classes = useStyles();
 

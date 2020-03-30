@@ -1,18 +1,12 @@
 import React from 'react';
 import Buttonn from '@material-ui/core/Button';
 import { MuiThemeProvider, makeStyles, createStyles } from '@material-ui/core/styles';
-import { theme } from '../style/style';
+import { theme, useStyles } from '../style/style';
 
 
 const Button = (props) => {
 
-
-const useStyles = makeStyles(() => createStyles({
-    m:{
-        margin: '15px'
-    }
-  }));
-const classes = useStyles();
+  const classes = useStyles();
 
   const { onClick, children } = props;
   return (

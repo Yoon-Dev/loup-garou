@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import Button from '../components/Button';
 import { useMasterGame, addPlayer } from '../services/MasterGame';
-import { makeStyles } from '@material-ui/core/styles';
+import { useStyles } from '../style/style';
 import Grid from '@material-ui/core/Grid';
 
 
@@ -11,9 +11,6 @@ const AddPlayerForm = () => {
 
   const [value, setValue] = useState('');
   const { game } = useMasterGame();
-    console.log("master game id", game.id);
-    console.log("master game set ", game.players);
-    console.log("master game", game);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -35,15 +32,6 @@ const AddPlayerForm = () => {
 };
 
 const CreatePage = (props) => {
-  const useStyles = makeStyles(theme => ({
-    item: {
-      display: 'flex',
-      justifyContent: "center"
-    },
-    container: {
-      alignItems: 'center'
-    }
-    }));
 
   const classes = useStyles();
   const { game } = useMasterGame();

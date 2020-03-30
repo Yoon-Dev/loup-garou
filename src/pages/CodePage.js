@@ -5,26 +5,13 @@ import Button from '../components/Button';
 import firebase from '../services/Firebase';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import { useStyles } from '../style/style'; 
 import Card from '@material-ui/core/Card';
 
 
 
 const CodePage = ({setGame}) => {
-  const useStyles = makeStyles(theme => ({
-    item: {
-      display: 'flex',
-      justifyContent: "center",
-      
-    },
-    container: {
-      marginTop: "25px",
-      justifyContent: "center"
-    },
-    card: {
-      boxShadow: "0px 0px 51px 3px rgba(0,0,0,0.25)"
-    }
-    }));
+
   const classes = useStyles();
   const [code, setCode] = useState('');
   const [name, setName] = useState('');
@@ -62,10 +49,10 @@ const CodePage = ({setGame}) => {
 
   return (
       <form onSubmit={handleSubmit}>
-        <Grid container spacing={3} className={classes.container}>
+        <Grid container spacing={3} className={classes.containercodepage}>
           <Grid item xs={8} md={12} className={classes.item}>
             <Card className={classes.card} color="secondary">
-              <Grid container spacing={3} className={classes.container}>
+              <Grid container spacing={3} className={classes.containercodepage}>
                 <Grid item xs={12} className={classes.item}>
                   <TextField
                     type="text"
